@@ -45,22 +45,21 @@ class Player extends FlxSprite
 			);
 		
 		if (FlxG.plugins.get(FlxControl) == null) FlxG.plugins.add(new FlxControl());
-		FlxControl.player1.setGravity(0, 200);
+		FlxControl.player1.setGravity(0, 350);
 		var bounds:FlxRect = FlxG.worldBounds;
 		FlxControl.player1.setBounds(Std.int(bounds.x), Std.int(bounds.y),
 			Std.int(bounds.width), Std.int(bounds.height));
-		//FlxControl.player1.set
 		FlxControl.player1.setCursorControl(false, false, true, true);
-		FlxControl.player1.setJumpButton("UP", FlxControlHandler.KEYMODE_JUST_DOWN, 170,
+		FlxControl.player1.setJumpButton("UP", FlxControlHandler.KEYMODE_JUST_DOWN, 230,
 			FlxObject.FLOOR, 250, 100);
-		FlxControl.player1.setAdvancedMovementSpeed(2000, 2000, 230, 110, 110, 200, 2000, 200);
+		FlxControl.player1.setAdvancedMovementSpeed(2000, 2000, 230, 110, 150, 200, 2000, 200);
 		FlxControl.start();
 		
 		Reg.state.player = this;
 		Reg.state.playerlayer.add(this);
 		
-		FlxTilemap.radius = Std.int(350);
-		FlxTilemap.player = this;
+		FlxTilemapAppear.radius = Std.int(350);
+		FlxTilemapAppear.player = this;
 	}
 	
 	override public function update():Void

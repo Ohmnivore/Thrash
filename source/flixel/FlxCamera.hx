@@ -451,7 +451,7 @@ class FlxCamera extends FlxBasic
 		
 		#if flash
 		screen = new FlxSprite();
-		buffer = new BitmapData(width, height, true, 0);
+		buffer = new BitmapData(width + 2, height + 2, true, 0);
 		screen.pixels = buffer;
 		screen.origin.set();
 		#end
@@ -483,7 +483,7 @@ class FlxCamera extends FlxBasic
 		#else
 		flashSprite.addChild(canvas);
 		#end
-		_flashRect = new Rectangle(0, 0, width, height);
+		_flashRect = new Rectangle(0, 0, width + 4, height + 4);
 		_flashPoint = new Point();
 		
 		_fxShakeOffset = new FlxPoint();
@@ -1027,14 +1027,14 @@ class FlxCamera extends FlxBasic
 			if (width != buffer.width || height != buffer.height)
 			{
 				FlxG.bitmap.remove(screen.cachedGraphics.key);
-				buffer = new BitmapData(width, height, true, 0);
+				buffer = new BitmapData(width + 4, height + 4, true, 0);
 				screen.pixels = buffer;
 				screen.origin.set();
 				_flashBitmap.bitmapData = buffer;
-				_flashRect.width = width;
-				_flashRect.height = height;
+				_flashRect.width = width + 4;
+				_flashRect.height = height + 4;
 				_fill.dispose();
-				_fill = new BitmapData(width, height, true, FlxColor.TRANSPARENT);
+				_fill = new BitmapData(width + 4, height + 4, true, FlxColor.TRANSPARENT);
 			}
 			
 			regen = false;

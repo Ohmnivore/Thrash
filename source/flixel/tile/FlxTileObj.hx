@@ -16,8 +16,6 @@ class FlxTileObj extends FlxObject
 	public function new(X:Float = 0.0, Y:Float = 0.0)
 	{
 		super(X, Y);
-		if (x != 0 && y != 0)
-			trace(x, y);
 	}
 	
 	public function makeFall():Void

@@ -49,6 +49,8 @@ class MenuState extends FlxState
 			FlxG.cameras.bgColor = 0xff000000;
 		}
 		
+		FlxG.camera.setSize(320, 244);
+		
 		var spr:FlxSprite = new FlxSprite();
 		spr.loadGraphic("media/images/test.png");
 		add(spr);

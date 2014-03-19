@@ -48,7 +48,7 @@ class OgmoLoader
 		{
 			if (x.has.tileset) //Tilemap
 			{
-				var map:FlxTilemap = new FlxTilemap();
+				var map:FlxTilemapAppear = new FlxTilemapAppear();
 				map.loadMap(x.innerData, tilemaps.get(x.att.tileset), 16, 16, 0, 0, 0, 0);
 				State.maps.add(map);
 				

@@ -15,6 +15,7 @@ import flixel.system.layer.DrawStackItem;
 import flixel.system.layer.Region;
 import flixel.util.FlxArrayUtil;
 import flixel.util.FlxColor;
+import flixel.util.FlxColorUtil;
 import flixel.util.FlxMath;
 import flixel.util.FlxPoint;
 import flixel.util.FlxRandom;
@@ -34,11 +35,13 @@ import flixel.util.loaders.TextureRegion;
  */
 class FlxTilemap extends FlxObject
 {
-	public var objMap:Map<Int, FlxTileObj>;
-	static public var player:FlxObject;
-	static public var radius:Int;
-	private var flashp:Point;
-	private var ct:ColorTransform;
+	//public var objMap:Map<Int, FlxTileObj>;
+	//static public var player:FlxObject;
+	//static public var radius:Int;
+	//private var flashp:Point;
+	//private var ct:ColorTransform;
+	//private var alphaBitmap:BitmapData;
+	//private var alphaHelper:Point;
 	
 	/**
 	 * No auto-tiling.
@@ -198,9 +201,9 @@ class FlxTilemap extends FlxObject
 	{
 		super();
 		
-		objMap = new Map();
-		flashp = new Point();
-		ct = new ColorTransform();
+		//objMap = new Map();
+		//flashp = new Point();
+		//ct = new ColorTransform();
 		
 		collisionType = FlxCollisionType.TILEMAP;
 		
@@ -1751,44 +1754,47 @@ class FlxTilemap extends FlxObject
 				#if flash
 				_flashRect = _rects[columnIndex];
 				
-				if (!objMap.exists(columnIndex))
-				{
-					objMap.set(columnIndex, new FlxTileObj(_flashPoint.x, _flashPoint.y));
-				}
+				//if (!objMap.exists(columnIndex))
+				//{
+					//objMap.set(columnIndex, new FlxTileObj(_flashPoint.x, _flashPoint.y));
+				//}
 				
-				else
-				{
-					tileobj = objMap.get(columnIndex);
-					flashp = _flashPoint.clone();
-					
-					if (!tileobj.showed)
-					{
-						var p:FlxPoint = new FlxPoint(_flashPoint.x + _point.x, _flashPoint.y + _point.y);
-						var dist:Float = player.getMidpoint().distanceTo(p);
-						if (dist <= 280)
-						{
-							tileobj.makeFall();
-						}
-					}
-					
-					if (tileobj.fall != 0)
-						flashp.y += tileobj.fall;
-				}
+				//else
+				//{
+					//tileobj = objMap.get(columnIndex);
+					//flashp = _flashPoint.clone();
+					//
+					//if (!tileobj.showed)
+					//{
+						//var p:FlxPoint = new FlxPoint(_flashPoint.x + _point.x, _flashPoint.y + _point.y);
+						//var dist:Float = player.getMidpoint().distanceTo(p);
+						//if (dist <= 280)
+						//{
+							//tileobj.makeFall();
+						//}
+					//}
+					//
+					//if (tileobj.fall != 0)
+						//flashp.y += tileobj.fall;
+				//}
 				
 				if (_flashRect != null)
 				{
-					Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect, flashp, null, null, true);
-					if (tileobj.alpha != 1)
-					{
-						ct.alphaMultiplier = tileobj.alpha;
-						//ct = new ColorTransform(1, 1, 1, tileobj.alpha);
-						var flashr:Rectangle = _flashRect.clone();
-						flashr.y = flashp.y - 1;
-						flashr.x = flashp.x - 1;
-						flashr.width += 2;
-						flashr.height += 2;
-						Buffer.pixels.colorTransform(flashr, ct);
-					}
+					//if (tileobj.alpha != 1)
+					//{
+						//alphaBitmap = new BitmapData(Std.int(_scaledTileWidth), Std.int(_scaledTileHeight),
+						//true,
+						//FlxColorUtil.makeFromARGB(tileobj.alpha, 0, 0, 0)
+						//);
+						//Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect,
+							//flashp, alphaBitmap, new Point(), false);
+					//}
+					
+					//else
+					//{
+						Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect, _flashPoint,
+							null, null, false);
+					//}
 					
 					#if !FLX_NO_DEBUG
 					if (FlxG.debugger.drawDebug && !ignoreDrawDebug) 
