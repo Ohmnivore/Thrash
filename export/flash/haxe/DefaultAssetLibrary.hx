@@ -126,16 +126,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/flixel.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+		className.set ("media/images/drop.png", __ASSET__media_images_drop_png);
+		type.set ("media/images/drop.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/platformertiles.png", __ASSET__media_images_platformertiles_png);
 		type.set ("media/images/platformertiles.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/scan.png", __ASSET__media_images_scan_png);
 		type.set ("media/images/scan.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/test.png", __ASSET__media_images_test_png);
 		type.set ("media/images/test.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		className.set ("media/images/tree.png", __ASSET__media_images_tree_png);
+		type.set ("media/images/tree.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/lvls/ProjectDef.oep", __ASSET__media_lvls_projectdef_oep);
 		type.set ("media/lvls/ProjectDef.oep", Reflect.field (AssetType, "binary".toUpperCase ()));
 		className.set ("media/lvls/Test.oel", __ASSET__media_lvls_test_oel);
 		type.set ("media/lvls/Test.oel", Reflect.field (AssetType, "binary".toUpperCase ()));
+		className.set ("media/lvls/test2.oel", __ASSET__media_lvls_test2_oel);
+		type.set ("media/lvls/test2.oel", Reflect.field (AssetType, "binary".toUpperCase ()));
 		className.set ("media/splitter.pbj", __ASSET__media_splitter_pbj);
 		type.set ("media/splitter.pbj", Reflect.field (AssetType, "binary".toUpperCase ()));
 		
@@ -232,16 +238,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/flixel.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+		path.set ("media/images/drop.png", "media/images/drop.png");
+		type.set ("media/images/drop.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/platformertiles.png", "media/images/platformertiles.png");
 		type.set ("media/images/platformertiles.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/scan.png", "media/images/scan.png");
 		type.set ("media/images/scan.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/test.png", "media/images/test.png");
 		type.set ("media/images/test.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		path.set ("media/images/tree.png", "media/images/tree.png");
+		type.set ("media/images/tree.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/lvls/ProjectDef.oep", "media/lvls/ProjectDef.oep");
 		type.set ("media/lvls/ProjectDef.oep", Reflect.field (AssetType, "binary".toUpperCase ()));
 		path.set ("media/lvls/Test.oel", "media/lvls/Test.oel");
 		type.set ("media/lvls/Test.oel", Reflect.field (AssetType, "binary".toUpperCase ()));
+		path.set ("media/lvls/test2.oel", "media/lvls/test2.oel");
+		type.set ("media/lvls/test2.oel", Reflect.field (AssetType, "binary".toUpperCase ()));
 		path.set ("media/splitter.pbj", "media/splitter.pbj");
 		type.set ("media/splitter.pbj", Reflect.field (AssetType, "binary".toUpperCase ()));
 		
@@ -732,11 +744,14 @@ class __ASSET__assets_music_music_goes_here_txt extends flash.utils.ByteArray { 
 class __ASSET__assets_sounds_beep_wav extends flash.media.Sound { }
 class __ASSET__assets_sounds_flixel_wav extends flash.media.Sound { }
 class __ASSET__assets_sounds_sounds_go_here_txt extends flash.utils.ByteArray { }
+class __ASSET__media_images_drop_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_platformertiles_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_scan_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_test_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
+class __ASSET__media_images_tree_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_lvls_projectdef_oep extends flash.utils.ByteArray { }
 class __ASSET__media_lvls_test_oel extends flash.utils.ByteArray { }
+class __ASSET__media_lvls_test2_oel extends flash.utils.ByteArray { }
 class __ASSET__media_splitter_pbj extends flash.utils.ByteArray { }
 
 
@@ -745,6 +760,9 @@ class __ASSET__media_splitter_pbj extends flash.utils.ByteArray { }
 
 class __ASSET__assets_fonts_arial_ttf extends flash.text.Font { }
 class __ASSET__assets_fonts_nokiafc22_ttf extends flash.text.Font { }
+
+
+
 
 
 

@@ -13,7 +13,6 @@ import flixel.util.FlxPoint;
  */
 class FlxTile extends FlxObject
 {
-	public var setObj:Bool = false;
 	/**
 	 * This function is called whenever an object hits a tile of this type.
 	 * This function should take the form myFunction(Tile:FlxTile,Object:FlxObject):void.

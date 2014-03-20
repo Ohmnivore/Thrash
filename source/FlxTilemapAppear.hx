@@ -1,6 +1,5 @@
 package ;
 import flash.display.BitmapData;
-import flash.geom.ColorTransform;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flixel.addons.editors.tiled.TiledObject;
@@ -10,7 +9,6 @@ import flixel.FlxObject;
 import flixel.tile.FlxTile;
 import flixel.tile.FlxTilemap;
 import flixel.tile.FlxTilemapBuffer;
-import flixel.tile.FlxTileObj;
 import flixel.util.FlxColorUtil;
 import flixel.util.FlxPoint;
 
@@ -21,23 +19,21 @@ import flixel.util.FlxPoint;
 class FlxTilemapAppear extends FlxTilemap
 {
 	
-	public var objMap:Map<Int, FlxTileObj>;
+	public var objMap:Map<Int, TweenAppear>;
 	static public var player:FlxObject;
 	static public var radius:Int;
 	private var flashp:Point;
-	private var ct:ColorTransform;
 	private var alphaBitmap:BitmapData;
 	private var alphaHelper:Point;
 	private var alpharect:Rectangle;
 	private var alphapoint:Point;
-	private var tileobj:FlxTileObj;
+	private var tileobj:TweenAppear;
 	
 	public function new()
 	{
 		super();
 		objMap = new Map();
 		flashp = new Point();
-		ct = new ColorTransform();
 		alphaBitmap = new BitmapData(16, 16, true, 0xff000000);
 	}
 	
@@ -147,7 +143,7 @@ class FlxTilemapAppear extends FlxTilemap
 				{
 					if (!objMap.exists(columnIndex))
 					{
-						objMap.set(columnIndex, new FlxTileObj(_flashPoint.x, _flashPoint.y));
+						objMap.set(columnIndex, new TweenAppear());
 					}
 					
 					else
@@ -167,19 +163,19 @@ class FlxTilemapAppear extends FlxTilemap
 						
 						if (tileobj.fall != 0)
 							flashp.y += tileobj.fall;
-					}
-					
-					if (tileobj.alpha != 1)
-					{
-						alphaBitmap.fillRect(alpharect, FlxColorUtil.makeFromARGB(tileobj.alpha, 0, 0, 0));
-						Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect,
-							flashp, alphaBitmap, alphapoint, false);
-					}
-					
-					else
-					{
-						Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect, flashp,
-							null, null, false);
+						
+						if (tileobj.alpha != 1)
+						{
+							alphaBitmap.fillRect(alpharect, FlxColorUtil.makeFromARGB(tileobj.alpha, 0, 0, 0));
+							Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect,
+								flashp, alphaBitmap, alphapoint, false);
+						}
+						
+						else
+						{
+							Buffer.pixels.copyPixels(cachedGraphics.bitmap, _flashRect, flashp,
+								null, null, false);
+						}
 					}
 					
 					#if !FLX_NO_DEBUG

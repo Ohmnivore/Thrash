@@ -1747,7 +1747,7 @@ class FlxTilemap extends FlxObject
 			column = 0;
 			_flashPoint.x = 0;
 			
-			var tileobj:FlxTileObj = new FlxTileObj(0, 0);
+			//var tileobj:FlxTileObj = new FlxTileObj(0, 0);
 			
 			while (column < screenColumns)
 			{

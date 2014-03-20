@@ -60,6 +60,8 @@ class Player extends FlxSprite
 		
 		FlxTilemapAppear.radius = Std.int(350);
 		FlxTilemapAppear.player = this;
+		FlxSpriteAppear.radius = Std.int(350);
+		FlxSpriteAppear.player = this;
 	}
 	
 	override public function update():Void

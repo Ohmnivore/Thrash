@@ -1,5 +1,6 @@
 -main ApplicationMain 
 -lib openfl
+-lib hxsl
 -cp source
 -D tools=1.2.6
 -D web

@@ -15,7 +15,7 @@ class GameClass extends FlxGame
 	var initialState:Class<FlxState> = MenuState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 48; // How many frames per second the game should run at.
-	var framedraw:Int = 30; // How many frames per second the game should render at.
+	var framedraw:Int = 48; // How many frames per second the game should render at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
