@@ -6,6 +6,7 @@ import flixel.FlxObject;
 import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import flixel.util.FlxRect;
+import flixel.util.loaders.TexturePackerData;
 import haxe.xml.Fast;
 import flixel.FlxSprite;
 
@@ -26,8 +27,15 @@ class Player extends FlxSprite
 		
 		super(Std.parseInt(data.att.x), Std.parseInt(data.att.y));
 		
-		//loadGraphic('assets/images/sprite/$spritename.png', true, false, 96, 64);
-		makeGraphic(16, 24, FlxColor.CHARCOAL);
+		loadGraphic("media/images/agent_run4.png", true, true, 16, 24);
+		animation.add("run", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
+		animation.add("idle", [9, 10], 2, true);
+		animation.play("idle");
+		animation.add("jump", [18, 19, 20], 9, false);
+		animation.add("mergejump", [19, 19], 13, false);
+		
+		width -= 6;
+		offset.x = 3;
 		
 		FlxG.camera.follow(this, FlxCamera.STYLE_LOCKON, 6);
 		FlxG.camera.followLead.x = 10.0;
@@ -66,6 +74,42 @@ class Player extends FlxSprite
 	
 	override public function update():Void
 	{
+		if (isTouching(FlxObject.ANY) && velocity.x != 0)
+		{
+			animation.play("run");
+		}
+		
+		else
+		{
+			if (velocity.y >= 0)
+			{
+				var isnotrun:Bool = true;
+				
+				if (animation.name == "run")
+				{
+					animation.play("idle");
+					isnotrun = true;
+					
+				}
+				
+				if (animation.name == "jump" && isnotrun)
+				{
+					animation.play("mergejump");
+				}
+				
+				else
+				{
+					if (animation.curAnim == null)
+						animation.play("idle");
+				}
+			}
+		}
+		
+		if (FlxG.keys.justPressed.UP && isTouching(FlxObject.ANY))
+		{
+			animation.play("jump", true);
+		}
+		
 		super.update();
 	}
 }

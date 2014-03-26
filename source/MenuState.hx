@@ -51,14 +51,6 @@ class MenuState extends FlxState
 		
 		FlxG.camera.setSize(320, 244);
 		
-		var spr:FlxSprite = new FlxSprite();
-		spr.loadGraphic("media/images/test.png");
-		add(spr);
-		
-		//FlxG.game.startEffect();
-		
-		//var d:RGBShift = new RGBShift(spr.pixels);
-		//FlxG.game.stage.addChild(d);
 		FlxG.switchState(new PlayState());
 	}
 	

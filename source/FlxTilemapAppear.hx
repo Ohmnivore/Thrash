@@ -18,7 +18,6 @@ import flixel.util.FlxPoint;
  */
 class FlxTilemapAppear extends FlxTilemap
 {
-	
 	public var objMap:Map<Int, TweenAppear>;
 	static public var player:FlxObject;
 	static public var radius:Int;
@@ -148,6 +147,7 @@ class FlxTilemapAppear extends FlxTilemap
 					
 					else
 					{
+						tile = _tileObjects[_data[columnIndex]];
 						tileobj = objMap.get(columnIndex);
 						flashp = _flashPoint.clone();
 						

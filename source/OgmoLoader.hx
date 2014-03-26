@@ -2,12 +2,17 @@ package ;
 
 import entities.Player;
 import entities.Tree;
+import flixel.addons.plugin.control.FlxControl;
+import flixel.addons.plugin.control.FlxControlHandler;
 import flixel.addons.plugin.effects.FlxSpecialFX;
 import flixel.addons.plugin.effects.fx.StarfieldFX;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.tile.FlxTilemap;
+import flixel.util.FlxBitmapUtil;
+import flixel.util.FlxMath;
+import flixel.util.FlxRandom;
 import flixel.util.FlxRect;
 import haxe.xml.Fast;
 /**
@@ -26,8 +31,7 @@ class OgmoLoader
 		Tree;
 		
 		tilemaps = new Map();
-		tilemaps.set("test", "media/images/platformertiles.png");
-		tilemaps.set("Grid", "media/images/gridtiles.png");
+		tilemaps.set("grid", "media/images/gridtiles2.png");
 	}
 	
 	static public function loadXML(XML:String, State:PlayState):Void
@@ -54,15 +58,6 @@ class OgmoLoader
 				var map:FlxTilemapAppear = new FlxTilemapAppear();
 				map.loadMap(x.innerData, tilemaps.get(x.att.tileset), 16, 16, 0, 0, 0, 0);
 				State.maps.add(map);
-				
-				if (x.name.indexOf("Tiles") > -1)
-				{
-					State.collidemap = map;
-					FlxG.worldBounds.set(map.x - 100, map.y - 100, map.width + 200, map.height + 200);
-					State.bounds = new FlxRect(map.x - 100, map.y - 100, map.width + 200, map.height + 200);
-				}
-				
-				FlxG.worldBounds.set(map.x, map.y, map.width, map.height);
 			}
 			
 			else
@@ -82,11 +77,28 @@ class OgmoLoader
 					var map:FlxTilemapAppear = new FlxTilemapAppear();
 					map.widthInTiles = mapdata.widthInTiles;
 					map.heightInTiles = mapdata.heightInTiles;
-					map.loadMap(mapdata.arr, tilemaps.get("Grid"), 16, 16, 0, 0, 0, 0);
-					State.maps.add(map);
+					
+					map.loadMap(mapdata.arr, tilemaps.get("grid"), 16, 16, 0, 0, 0, 0);
+					makeTileCollisions(map);
+					State.overmaps.add(map);
+					
+					State.collidemap = map;
+					
+					if (x.name.indexOf("Tiles") > -1)
+					{
+						FlxG.worldBounds.set(map.x - 100, map.y - 100, map.width + 200, map.height + 200);
+						State.bounds = new FlxRect(map.x - 100, map.y - 100, map.width + 200, map.height + 200);
+						FlxControl.player1.removeBounds();
+					}
 				}
 			}
 		}
+	}
+	
+	static public function makeTileCollisions(M:FlxTilemap):Void
+	{
+		M.setTileProperties(16, FlxObject.NONE, 4);
+		M.setTileProperties(20, FlxObject.NONE, 2);
 	}
 	
 	static public function findGridWidth(GridStrArr:Array<String>):Int
@@ -118,6 +130,7 @@ class OgmoLoader
 		
 		while (i_row < col.length)
 		{
+			i_col = 0;
 			var g_row:Array<Bool> = col[i_row];
 			
 			while (i_col < g_row.length)
@@ -169,8 +182,62 @@ class OgmoLoader
 			i_row++;
 		}
 		
+		i_col = 0; //x
+		i_row = 0; //y
+		
+		while (i_row < col.length)
+		{
+			i_col = 0;
+			var g_row:Array<Bool> = col[i_row];
+			
+			while (i_col < g_row.length)
+			{
+				var sum:Int = getBuffer(i_col, i_row, g_row.length, buffer);
+				if (sum != -1)
+				{
+					addDetail(i_col, i_row, g_row.length, buffer, sum);
+				}
+				
+				i_col++;
+			}
+			
+			i_row++;
+		}
+		
 		returnData.arr = buffer;
 		return returnData;
+	}
+	
+	static public function addDetail(X:Int, Y:Int, Width:Int, Buffer:Array<Int>, Sum:Int):Void
+	{
+		if (Sum == 14 || Sum == 10)
+		{
+			if (FlxRandom.chanceRoll(40))
+			{
+				if (Y - 1 >= 0) 
+					setBuffer(X, Y - 1, Width, FlxRandom.intRanged(16, 19), Buffer);
+			}
+		}
+		
+		if (Sum == 11 || Sum == 10)
+		{
+			if (FlxRandom.chanceRoll(30))
+			{
+				if (Y + 1 < Buffer.length / Width)
+					setBuffer(X, Y + 1, Width, FlxRandom.intRanged(20, 21), Buffer);
+			}
+		}
+	}
+	
+	static public function setBuffer(X:Int, Y:Int, Width:Int, ToSet:Int, Buffer:Array<Int>):Void
+	{
+		var index:Int = Y * Width + X;
+		Buffer[index] = ToSet;
+	}
+	
+	static public function getBuffer(X:Int, Y:Int, Width:Int, Buffer:Array<Int>):Int
+	{
+		return Buffer[Y * Width + X];
 	}
 	
 	static public function gridInit(Grid:String, col:Array<Dynamic>):Void

@@ -34,6 +34,7 @@ class PlayState extends FlxState
 	public var maps:FlxGroup;
 	public var undermap:FlxGroup;
 	public var playerlayer:FlxGroup;
+	public var overmaps:FlxGroup;
 	public var emitters:FlxGroup;
 	public var overlay:FlxGroup;
 	
@@ -75,6 +76,8 @@ class PlayState extends FlxState
 		add(maps);
 		playerlayer = new FlxGroup();
 		add(playerlayer);
+		overmaps = new FlxGroup();
+		add(overmaps);
 		emitters = new FlxGroup();
 		add(emitters);
 		overlay = new FlxGroup();

@@ -37,30 +37,6 @@
         <Y>1</Y>
       </ScrollFactor>
     </LayerDefinition>
-    <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>Decorations</Name>
-      <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
-      </Grid>
-      <ScrollFactor>
-        <X>1</X>
-        <Y>1</Y>
-      </ScrollFactor>
-      <ExportMode>CSV</ExportMode>
-    </LayerDefinition>
-    <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>Tiles</Name>
-      <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
-      </Grid>
-      <ScrollFactor>
-        <X>1</X>
-        <Y>1</Y>
-      </ScrollFactor>
-      <ExportMode>CSV</ExportMode>
-    </LayerDefinition>
     <LayerDefinition xsi:type="EntityLayerDefinition">
       <Name>Entities</Name>
       <Grid>
@@ -73,7 +49,7 @@
       </ScrollFactor>
     </LayerDefinition>
     <LayerDefinition xsi:type="GridLayerDefinition">
-      <Name>Grid</Name>
+      <Name>TilesGrid</Name>
       <Grid>
         <Width>16</Width>
         <Height>16</Height>
@@ -86,17 +62,7 @@
       <ExportMode>Bitstring</ExportMode>
     </LayerDefinition>
   </LayerDefinitions>
-  <Tilesets>
-    <Tileset>
-      <Name>test</Name>
-      <FilePath>..\images\platformertiles.png</FilePath>
-      <TileSize>
-        <Width>16</Width>
-        <Height>16</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-  </Tilesets>
+  <Tilesets />
   <EntityDefinitions>
     <EntityDefinition Name="Player" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
