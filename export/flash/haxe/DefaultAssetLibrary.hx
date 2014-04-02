@@ -154,6 +154,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("media/images/anim/quad.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/anim/tibia.png", __ASSET__media_images_anim_tibia_png);
 		type.set ("media/images/anim/tibia.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		className.set ("media/images/anim_output/Punch.atlas", __ASSET__media_images_anim_output_punch_atlas);
+		type.set ("media/images/anim_output/Punch.atlas", Reflect.field (AssetType, "binary".toUpperCase ()));
+		className.set ("media/images/anim_output/Punch.png", __ASSET__media_images_anim_output_punch_png);
+		type.set ("media/images/anim_output/Punch.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		className.set ("media/images/blood.png", __ASSET__media_images_blood_png);
+		type.set ("media/images/blood.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/gridtiles2.png", __ASSET__media_images_gridtiles2_png);
 		type.set ("media/images/gridtiles2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		className.set ("media/images/scan.png", __ASSET__media_images_scan_png);
@@ -290,6 +296,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("media/images/anim/quad.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/anim/tibia.png", "media/images/anim/tibia.png");
 		type.set ("media/images/anim/tibia.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		path.set ("media/images/anim_output/Punch.atlas", "media/images/anim_output/Punch.atlas");
+		type.set ("media/images/anim_output/Punch.atlas", Reflect.field (AssetType, "binary".toUpperCase ()));
+		path.set ("media/images/anim_output/Punch.png", "media/images/anim_output/Punch.png");
+		type.set ("media/images/anim_output/Punch.png", Reflect.field (AssetType, "image".toUpperCase ()));
+		path.set ("media/images/blood.png", "media/images/blood.png");
+		type.set ("media/images/blood.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/gridtiles2.png", "media/images/gridtiles2.png");
 		type.set ("media/images/gridtiles2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 		path.set ("media/images/scan.png", "media/images/scan.png");
@@ -806,6 +818,9 @@ class __ASSET__media_images_anim_hand_png extends flash.display.BitmapData { pub
 class __ASSET__media_images_anim_head_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_anim_quad_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_anim_tibia_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
+class __ASSET__media_images_anim_output_punch_atlas extends flash.utils.ByteArray { }
+class __ASSET__media_images_anim_output_punch_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
+class __ASSET__media_images_blood_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_gridtiles2_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_scan_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
 class __ASSET__media_images_tree_png extends flash.display.BitmapData { public function new () { super (0, 0); } }
@@ -820,6 +835,9 @@ class __ASSET__media_splitter_pbj extends flash.utils.ByteArray { }
 
 class __ASSET__assets_fonts_arial_ttf extends flash.text.Font { }
 class __ASSET__assets_fonts_nokiafc22_ttf extends flash.text.Font { }
+
+
+
 
 
 

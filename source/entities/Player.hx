@@ -33,6 +33,7 @@ class Player extends FlxSprite
 		animation.play("idle");
 		animation.add("jump", [18, 19, 20], 9, false);
 		animation.add("mergejump", [19, 19], 13, false);
+		animation.add("punch", [27, 28, 29, 29, 29], 16, false);
 		
 		width -= 6;
 		offset.x = 3;
@@ -74,40 +75,52 @@ class Player extends FlxSprite
 	
 	override public function update():Void
 	{
-		if (isTouching(FlxObject.ANY) && velocity.x != 0)
+		if (FlxG.keys.justPressed.X)
 		{
-			animation.play("run");
-		}
-		
-		else
-		{
-			if (velocity.y >= 0)
+			if (animation.getByName("punch").finished)
 			{
-				var isnotrun:Bool = true;
-				
-				if (animation.name == "run")
-				{
-					animation.play("idle");
-					isnotrun = true;
-					
-				}
-				
-				if (animation.name == "jump" && isnotrun)
-				{
-					animation.play("mergejump");
-				}
-				
-				else
-				{
-					if (animation.curAnim == null)
-						animation.play("idle");
-				}
+				animation.play("punch");
+				new Blood(x, y);
 			}
 		}
 		
-		if (FlxG.keys.justPressed.UP && isTouching(FlxObject.ANY))
+		if (animation.getByName("punch").finished)
 		{
-			animation.play("jump", true);
+			if (isTouching(FlxObject.ANY) && velocity.x != 0)
+			{
+				animation.play("run");
+			}
+			
+			else
+			{
+				if (velocity.y >= 0)
+				{
+					var isnotrun:Bool = true;
+					
+					if (animation.name == "run")
+					{
+						animation.play("idle");
+						isnotrun = true;
+						
+					}
+					
+					if (animation.name == "jump" && isnotrun)
+					{
+						animation.play("mergejump");
+					}
+					
+					else
+					{
+						if (animation.curAnim == null)
+							animation.play("idle");
+					}
+				}
+			}
+			
+			if (FlxG.keys.justPressed.UP && isTouching(FlxObject.ANY))
+			{
+				animation.play("jump", true);
+			}
 		}
 		
 		super.update();

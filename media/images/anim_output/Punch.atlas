@@ -1,0 +1,68 @@
+
+Punch.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Punch0
+  rotate: false
+  xy: 63, 2
+  size: 16, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch2
+  rotate: false
+  xy: 63, 2
+  size: 16, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch1
+  rotate: false
+  xy: 63, 2
+  size: 16, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch3
+  rotate: false
+  xy: 23, 2
+  size: 18, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch4
+  rotate: false
+  xy: 23, 2
+  size: 18, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch5
+  rotate: false
+  xy: 43, 2
+  size: 18, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch7
+  rotate: false
+  xy: 43, 2
+  size: 18, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch6
+  rotate: false
+  xy: 43, 2
+  size: 18, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+Punch8
+  rotate: false
+  xy: 2, 2
+  size: 19, 25
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
