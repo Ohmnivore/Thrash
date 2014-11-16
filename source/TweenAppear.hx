@@ -29,8 +29,10 @@ class TweenAppear
 		{
 			var opt:TweenOptions = { };
 			opt.ease = FlxEase.quadOut;
-			FlxTween.singleVar(this, "fall", 0, 1, opt);
-			FlxTween.singleVar(this, "alpha", 1, 2.0, opt);
+			//FlxTween.singleVar(this, "fall", 0, 1, opt);
+			FlxTween.tween(this, {fall: 0}, 1, opt);
+			//FlxTween.singleVar(this, "alpha", 1, 2.0, opt);
+			FlxTween.tween(this, {alpha: 1}, 2.0, opt);
 			showed = true;
 		}
 	}

@@ -1,8 +1,6 @@
 package;
 
 import flash.Lib;
-import flixel.addons.plugin.control.FlxControl;
-import flixel.addons.plugin.effects.FlxSpecialFX;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;

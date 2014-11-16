@@ -4,8 +4,7 @@ import entities.Player;
 import entities.Tree;
 import flixel.addons.plugin.control.FlxControl;
 import flixel.addons.plugin.control.FlxControlHandler;
-import flixel.addons.plugin.effects.FlxSpecialFX;
-import flixel.addons.plugin.effects.fx.StarfieldFX;
+import flixel.addons.display.FlxStarField.FlxStarField2D;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxState;
@@ -40,16 +39,14 @@ class OgmoLoader
 		
 		var fast = new Fast(xml.firstElement());
 		
-		if (FlxG.plugins.get(FlxSpecialFX) == null) FlxG.plugins.add(new FlxSpecialFX());
-		State.starfx = FlxSpecialFX.starfield();
-		State.add(State.starfx.create(0, 0, FlxG.width, FlxG.height, 50, StarfieldFX.STARFIELD_TYPE_2D));
-		State.starfield = State.starfx.sprite;
-		State.starfield.scrollFactor.set();
-		State.background.add(State.starfield);
-		
-		State.starfx.setBackgroundColor(0xff);
+		State.starfx = new FlxStarField2D(0, 0, FlxG.width, FlxG.height, 50); //1.5 value is an ugly hack
+		State.starfx.scrollFactor.set();
+		State.background.add(State.starfx);
+		State.starfx.bgColor = 0xff;
 		State.starfx.setStarDepthColors(3, 0xff585858, 0xffABABAB);
-		State.starfx.setStarSpeed( -1, 1);
+		State.starfx.setStarSpeed(10, 100);
+		State.starfx.starVelocityOffset.x = -1;
+		State.starfx.starVelocityOffset.y = 1;
 		
 		for (x in fast.elements)
 		{

@@ -12,7 +12,7 @@ class Blood extends FlxSprite
 	public function new(X:Float, Y:Float) 
 	{
 		super(X - 50, Y - 50);
-		loadGraphic("media/images/blood.png", false, false, 100, 100);
+		loadGraphic("media/images/blood.png", false, 100, 100);
 		
 		animation.add("anim", [FlxRandom.intRanged(0, 15)], 1, false);
 		animation.play("anim");

@@ -1,7 +1,6 @@
 package;
 
 import flixel.addons.display.FlxZoomCamera;
-import flixel.addons.plugin.effects.FlxSpecialFX;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;

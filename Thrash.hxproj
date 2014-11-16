@@ -15,22 +15,25 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\2,0,1" />
+    <class path="C:\HaxeToolkit\haxe\lib\hxsl\2,0,5" />
+    <class path="C:\HaxeToolkit\haxe\lib\format\3,1,1" />
     <class path="source" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\2,0,1\backends\flash" />
     <class path="export\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.2.6&#xA;display&#xA;web" />
+    <option directives="openfl=2.0.1&#xA;hxsl=2.0.5&#xA;format=3.1.1&#xA;tools=1.5.7&#xA;openfl-flash&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="False" />
-    <option additional="--no-output&#xA;-swf-version 11.2&#xA;#--remap nme:flash" />
+    <option additional="--no-output&#xA;-swf-version 11.8" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
-    <library name="openfl" />
-    <library name="hxsl" />
+    <!-- example: <library name="..." /> -->
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

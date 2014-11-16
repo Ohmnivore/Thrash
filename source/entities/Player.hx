@@ -27,7 +27,9 @@ class Player extends FlxSprite
 		
 		super(Std.parseInt(data.att.x), Std.parseInt(data.att.y));
 		
-		loadGraphic("media/images/agent_run4.png", true, true, 16, 24);
+		loadGraphic("media/images/agent_run4.png", true, 16, 24);
+		setFacingFlip(FlxObject.LEFT, true, false);
+		setFacingFlip(FlxObject.RIGHT, false, false);
 		animation.add("run", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
 		animation.add("idle", [9, 10], 2, true);
 		animation.play("idle");

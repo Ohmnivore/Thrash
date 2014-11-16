@@ -4,8 +4,7 @@ import entities.Player;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flixel.addons.plugin.control.FlxControl;
-import flixel.addons.plugin.effects.FlxSpecialFX;
-import flixel.addons.plugin.effects.fx.StarfieldFX;
+import flixel.addons.display.FlxStarField.FlxStarField2D;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -14,7 +13,11 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.tweens.misc.MultiVarTween;
+import flixel.tweens.FlxTween.TweenOptions;
+import flixel.tweens.misc.VarTween;
+import flixel.util.FlxSpriteUtil;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxRect;
@@ -40,8 +43,7 @@ class PlayState extends FlxState
 	
 	public var collidemap:FlxTilemapAppear;
 	public var player:Player;
-	public var starfx:StarfieldFX;
-	public var starfield:FlxSprite;
+	public var starfx:FlxStarField2D;
 	
 	public var bounds:FlxRect;
 	
@@ -115,7 +117,6 @@ class PlayState extends FlxState
 	 */
 	override public function destroy():Void
 	{
-		FlxG.plugins.removeType(FlxSpecialFX);
 		FlxG.plugins.removeType(FlxControl);
 		super.destroy();
 	}
@@ -154,11 +155,15 @@ class PlayState extends FlxState
 	}
 }
 
-class TweenHelper {
+class TweenHelper
+{
 	public var y:Float = 0;
 	public var x:Float = 0;
 	
-	public function new() { }
+	public function new()
+	{
+		
+	}
 	
 	static public function randRange(min:Float, max:Float):Int 
 	{
@@ -171,7 +176,7 @@ class TweenHelper {
 		var opt:TweenOptions = { };
 		opt.ease = FlxEase.sineInOut;
 		opt.complete = distortx;
-		FlxTween.multiVar(img, {
+		FlxTween.tween(img, {
 								y: randRange( - 1, 1),	// randomize y shift
 								}
 							, randRange(1, 2) / 10,
@@ -181,11 +186,11 @@ class TweenHelper {
 	
 	static public function distortx(flx:FlxTween):Void
 	{
-		var img:Dynamic = cast(flx, MultiVarTween)._object;
+		var img:Dynamic = Reflect.getProperty(cast(flx, VarTween), "_object");
 		var opt:TweenOptions = { };
 		opt.ease = FlxEase.sineInOut;
 		opt.complete = distortx;
-		FlxTween.multiVar(img, {
+		FlxTween.tween(img, {
 								y: randRange(- 1, 1),	// randomize y shift
 								}
 							, randRange(1, 2) / 10,
